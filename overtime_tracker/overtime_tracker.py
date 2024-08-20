@@ -59,7 +59,8 @@ def remove_zero_days_prefix(filename):
 
 # Main script
 expected_work_hours = 8
-df = pd.read_csv('work_times.md',
+file_path_android = 'Work Times.md'
+df = pd.read_csv(file_path_android,
                  sep='\\s*\\|\\s*',
                  engine='python',
                  header=None)
@@ -80,7 +81,7 @@ df[['Start', 'Pause',
         if isinstance(x, str) else format_time_without_seconds(x)))
 
 # Save to markdown
-df.to_markdown('work_times.md', index=False)
+df.to_markdown(file_path_android, index=False)
 
 # Remove '0 days' prefix from markdown file
-remove_zero_days_prefix('work_times.md')
+remove_zero_days_prefix(file_path_android)
